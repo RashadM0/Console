@@ -63,14 +63,15 @@ namespace ConsoleMiniProject.Models
             WorkerLimit = workerLimit;
         }
 
-        public static double CalcSalaryAverage(Employee[] employees)
+        public double CalcSalaryAverage()
         {
             double SalaryAverage = 0;
-            foreach (Employee item in employees)
+            foreach (Employee item in Employees)
             {
-                SalaryAverage += item.Salary / employees.Length;
+                SalaryAverage += item.Salary / Employees.Length;
             }
             return SalaryAverage;
         }
+
     }
 }

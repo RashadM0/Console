@@ -11,7 +11,6 @@ namespace ConsoleMiniProject.Services
     class HumanResourceManager : IHumanResourceManager
     {
         private Department[] _departments;
-
         public Department[] Departments
         {
             get
@@ -107,6 +106,26 @@ namespace ConsoleMiniProject.Services
                 }
             }
         }
+
+        public void InfoDepartment(Department[] departments)
+        {
+            foreach (var item in Departments)
+            {
+                for (int i = 0; i < Departments.Length; i++)
+                {
+                    if (item.Employees == null)
+                    {
+                        i++;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Department Name: {item.Name}  Number of Workers: {item.Employees.Length}   Average Salary : {item.CalcSalaryAverage()}");
+                        break;
+                    }
+                }
+            }
+        }
+    
 
         #endregion
     }

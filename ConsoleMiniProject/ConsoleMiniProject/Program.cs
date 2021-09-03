@@ -66,17 +66,21 @@ namespace ConsoleMiniProject
 
                 switch (Choise)
                 {
-                case "2":
-                    AddDepartment(ref humanResourceManager);
+                    case "1":
+                        InfoDepartment(ref humanResourceManager);
+                        break;
+
+                    case "2":
+                        AddDepartment(ref humanResourceManager);
                         Console.WriteLine("Press any key for continue");
                         Console.ReadLine();
                         goto TryAgain;
                     break;
 
-                case "7":
-                    EditEmployee(ref humanResourceManager);
+                    case "7":
+                        EditEmployee(ref humanResourceManager);
                     break;
-                case "0":
+                    case "0":
                     break;
                 default:
                         Console.Clear();
@@ -85,7 +89,12 @@ namespace ConsoleMiniProject
                 }
             }
         }
-        
+
+        static void InfoDepartment(ref HumanResourceManager humanResourceManager)
+        {
+
+        }
+
         static void AddDepartment(ref HumanResourceManager humanResourceManager)
         {
 
@@ -98,8 +107,7 @@ namespace ConsoleMiniProject
             {
                 Console.Write(
                     "\n" +
-                    "Department name Cannot be Less than 2 Letters. Please Try Again: " +
-                    "\n");
+                    "Department name Cannot be Less than 2 Letters. Please Try Again: ");
                 goto AddAgain2;
             }
             Console.Write("Please Enter the Worker Limit: ");
@@ -110,13 +118,22 @@ namespace ConsoleMiniProject
             {
                 Console.Write(
                     "\n" +
-                    "Please Enter Integer Value: " +
-                    "\n");
+                    "Please Enter Integer Value: ");
                 goto ChoiseWorkerLimit;
             }
 
             Console.Write("Please Enter the Salary Limit: ");
-            double salaryLimit = Convert.ToDouble(Console.ReadLine());
+            ChoiseSalaryLimit:
+            double salaryLimit;
+            bool number1 = double.TryParse(Console.ReadLine(), out salaryLimit);
+            if (!number1)
+            {
+                Console.Write(
+                    "\n" +
+                    "Please Enter Proper Value: ");
+                goto ChoiseSalaryLimit;
+            }
+            
             if (salaryLimit >= 250 && workerLimit >= 1)
             {
                 humanResourceManager.AddDepartment(name, salaryLimit, workerLimit);
@@ -129,7 +146,8 @@ namespace ConsoleMiniProject
             }
             else
             {
-                Console.WriteLine("The Minimum Salary Should be 250.");
+                Console.Write("The Minimum Salary Should be 250: ");
+                goto ChoiseSalaryLimit;
             }
 
         }

@@ -11,6 +11,7 @@ namespace ConsoleMiniProject.Interfaces
     {
         Department[] Departments { get; }
         Department[] GetDepartments();
+        void InfoDepartment(Department[] departments);
         void AddDepartment(string name, double salaryLimit, int workerLimit);
         void EditDepartments(string name, string NewDepartmentName);
         void AddEmployee(Employee employee, Employee[] employees, Department department);
