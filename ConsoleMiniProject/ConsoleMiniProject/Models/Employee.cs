@@ -42,11 +42,11 @@ namespace ConsoleMiniProject.Models
         }
         public string DepartmentName { get; set; }
         public Positions positions;
-        public Employee(string fullName, double salary, string departmentName, string position, Positions positions)
+        public Employee(string fullName, double salary, Department departmentName, string position, Positions positions)
         {
             FullName = fullName;
             Salary = salary;
-            DepartmentName = departmentName;
+            DepartmentName = departmentName.Name;
             Position = position;
             Id = $"{position[0]}{position[1]}{++count}";
 

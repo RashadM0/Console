@@ -63,6 +63,11 @@ namespace ConsoleMiniProject.Models
             WorkerLimit = workerLimit;
         }
 
+        public void AddEmployee(Employee employee)
+        {
+            Array.Resize(ref Employees, Employees.Length + 1);
+            Employees[Employees.Length - 1] = employee;
+        }
         public double CalcSalaryAverage()
         {
             double SalaryAverage = 0;
@@ -73,5 +78,6 @@ namespace ConsoleMiniProject.Models
             return SalaryAverage;
         }
 
+        
     }
 }
