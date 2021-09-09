@@ -34,12 +34,10 @@ namespace ConsoleMiniProject.Services
             else
                 Console.WriteLine("Not Such Department Found!");
         }
-
         public Department[] GetDepartments(Department[] departments)
         {
             return departments;
         }
-
         public void InfoDepartment()
         {
             foreach (var item in Departments)
@@ -84,7 +82,7 @@ namespace ConsoleMiniProject.Services
                                 "\n++++++++++++++++++++++++++++++++++++++" +
                                 $"\nFull Name of Employee: {item1.FullName}" +
                                 "\n++++++++++++++++++++++++++++++++++++++" +
-                                $"\nPosition of Employee: {item1.positions}" +
+                                $"\nPosition of Employee: {item1.Positions}" +
                                 "\n++++++++++++++++++++++++++++++++++++++" +
                                 $"\nSalary of Employee: {item1.Salary}" +
                                 "\n======================================\n");
@@ -97,7 +95,6 @@ namespace ConsoleMiniProject.Services
                     }
                 }
         }
-
         public void ShowEmployees(Employee[] employees)
         {
             foreach (var item in Departments)
@@ -119,61 +116,50 @@ namespace ConsoleMiniProject.Services
                 }
             }
         }
-
-
-        public void AddEmployee(string fullName, Positions positions, double salary, int index, Employee employee)
+        public void AddEmployee(string fullName, Positions positions, double salary, int index)
         {
             Department department = _departments[index];
-            //Department department = _departments[];
-            //tryagain:
-            //Array.Resize(ref department.Employees, department.Employees.Length + 1);
-            //department.Employees[department.Employees.Length - 1] = 
-
-
             if (department.WorkerLimit > department.Employees.Length)
             {
                 if (department.SalaryLimit > salary)
                 {
-                    //Employee employee = new Employee(fullName, salary, department, positions);
-                    
-                    AddEmployee(fullName, positions, salary, index, employee);
+                    Employee employee = new Employee(fullName, salary, department, positions);
+                    //AddEmployee(fullName, positions, salary, index);
                     department.AddEmployee(employee);
                     Console.WriteLine("\n\n***************************************\n\nEmployee successfully added!\n");
                     return;
                 }
                 else
                 {
-                    Console.WriteLine("salary limit");
+                    Console.WriteLine("You have exceeded the salary limit. Please try again: ");
                     return;
                 }
             }
             else
             {
-                Console.WriteLine("Worker limit");
+                Console.WriteLine("You have exceeded the worker limit. Please try again: ");
                 return;
             }
         }
-
-        public void DeleteEmployee(string departmentName, string id)
+        public void DeleteEmployee(string dName, string idEmp, string eName)
         {
             Department department = null;
-
-            foreach (Department item in Departments)
+            foreach (Department item in _departments)
             {
-                if (item.Name.ToLower() == departmentName.ToLower())
+                if (item.Name.ToLower() == dName.ToLower())
                 {
                     department = item;
                     break;
                 }
             }
-
             Employee employee = null;
 
             if (department != null)
             {
                 foreach (Employee item in department.Employees)
                 {
-                    if (item.Id.ToLower() == id.ToLower())
+
+                    if (item.FullName.ToUpper() == idEmp.ToUpper())
                     {
                         employee = item;
                         break;
@@ -181,28 +167,36 @@ namespace ConsoleMiniProject.Services
                 }
             }
             else
-            {
                 Console.WriteLine("Employee is not exist!");
-                return;
-            }
-
-        }
-
-        public void EditEmployee( string id, double salary, Positions positions)
-        {
-            foreach (var item in _departments)
+            if (employee != null)
             {
-                foreach (var item1 in item.Employees)
+                foreach (var item in department.Employees)
                 {
-                    if (item1.Id == id)
+                    if (item.Id.ToUpper() == idEmp.ToUpper())
                     {
-                        Console.WriteLine("Employee Detected: ");
-                        Console.WriteLine($"{item1.FullName} {item1.Salary} {item1.Position}");
+                        int index = Array.IndexOf(department.Employees, employee);
+                        Array.Clear(department.Employees, index, 1);
+                        Console.WriteLine("\n\n***************************************\n\nEmployee Successfully Deleted!\n");
                     }
                 }
             }
+            else
+                Console.WriteLine("Employee is not exist aaaa!");
         }
-
+        public void EditEmployee( string id, double salary, Positions positions)
+        {
+            //foreach (var item in _departments)
+            //{
+            //    foreach (var item1 in item.Employees)
+            //    {
+            //        if (item1.Id == id)
+            //        {
+            //            Console.WriteLine("Employee Detected: ");
+            //            Console.WriteLine($"{item1.FullName} {item1.Salary} {item1.Positions}");
+            //        }
+            //    }
+            //}
+        }
         #endregion
     }
 

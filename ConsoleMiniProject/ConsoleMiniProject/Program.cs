@@ -108,7 +108,16 @@ namespace ConsoleMiniProject
                         break;
                     case "7":
                         EditEmployee(ref humanResourceManager);
-                    break;
+                        Console.WriteLine("Press any key for continue");
+                        Console.ReadLine();
+                        goto TryAgain;
+                        break;
+                    case "8":
+                        DeleteEmployee(ref humanResourceManager);
+                        Console.WriteLine("Press any key for continue");
+                        Console.ReadLine();
+                        goto TryAgain;
+                        break;
                     case "0":
                     break;
                 default:
@@ -179,7 +188,6 @@ namespace ConsoleMiniProject
         }
         static void AddEmployee(ref HumanResourceManager humanResourceManager)
         {
-            
             Console.Write("Enter Full Name of Employee: ");
             string fullName = Console.ReadLine();
 
@@ -214,10 +222,7 @@ namespace ConsoleMiniProject
                 Console.Write("The Minimum Salary Should be 250. Please Try Again: ");
                 goto tryagain;
             }
-            else
-                Console.WriteLine("\n\n***************************************\n\nEmployee successfully added!\n");
-
-            humanResourceManager.AddEmployee(fullName, positions, salary, employee(Depart - 1));
+            humanResourceManager.AddEmployee(fullName, positions, salary, (Depart - 1));
         }
         static void EditDepartments(ref HumanResourceManager humanResourceManager)
         {
@@ -270,33 +275,59 @@ namespace ConsoleMiniProject
             
         static void EditEmployee(ref HumanResourceManager humanResourceManager)
             {
-                Console.Write("Enter Employee ID: ");
-                string id = Console.ReadLine();
-
-                Console.Write("Enter Employee Salary: ");
-                double salary = Convert.ToDouble(Console.ReadLine());
-                Console.WriteLine("Positions: ");
-                string[] positionName = Enum.GetNames(typeof(Positions));
-                for (int i = 0; i < positionName.Length; i++)
+            Console.Write("Enter Employee ID: ");
+            string id = Console.ReadLine();
+            foreach (var item in humanResourceManager.Departments)
+            {
+                foreach (var item1 in item.Employees)
                 {
-                    Console.WriteLine($"{i + 1} {positionName[i]}");
+                    if (item1.Id == id)
+                    {
+                        Console.WriteLine("Employee Detected: ");
+                        Console.WriteLine("++++++++++++++++++++++++++++++++++++++" +
+                        $"\n{item1.FullName}" +
+                        "\n++++++++++++++++++++++++++++++++++++++" +
+                        $"\n{item1.Salary}" +
+                        "\n++++++++++++++++++++++++++++++++++++++" +
+                        $"\n{item1.Positions}\n\n");
+                        string[] positionName = Enum.GetNames(typeof(Positions));
+                        for (int i = 0; i < positionName.Length; i++)
+                        {
+                            Console.WriteLine($"{i + 1} {positionName[i]}");
+                        }
+                        string typeStr;
+                        int typeInt;
+                        Console.Write("\n***************************************\nSelect Position: ");
+                        typeStr = Console.ReadLine();
+
+                        while (!int.TryParse(typeStr, out typeInt) || typeInt < 1 || typeInt > positionName.Length)
+                        {
+                            Console.WriteLine("Wrong Number!");
+                            typeStr = Console.ReadLine();
+                        }
+
+                        Positions positions = (Positions)typeInt;
+                        item1.Positions = positions;
+
+                        Console.Write("\n***************************************\nEnter new employee salary: ");
+                        double salary = Convert.ToDouble(Console.ReadLine());
+                        item1.Salary = salary;
+                        humanResourceManager.EditEmployee(id, salary, positions);
+                        Console.WriteLine("\n\n***************************************\n\nEmployee successfully edited!\n");
+                        return;
+                    }
                 }
-                
-                string typeStr;
-                int typeInt;
-
-                Console.Write("Select Position: ");
-                typeStr = Console.ReadLine();
-                
-                while (!int.TryParse(typeStr,out typeInt) || typeInt < 0 || typeInt < positionName.Length)
-                {
-                    Console.WriteLine("Wrong Number!");
-                    typeStr = Console.ReadLine();
-                }
-
-                Positions positions  = (Positions)typeInt;
-
-                humanResourceManager.EditEmployee(id, salary, positions);
             }
+        }
+        static void DeleteEmployee(ref HumanResourceManager humanResourceManager)
+        {
+            Console.Write("Enter Department Name: ");
+            string dName = Console.ReadLine().Trim();
+            Console.Write("Enter Employee Name you Want to Delete: ");
+            string eName = Console.ReadLine().Trim();
+            Console.Write("Enter Employee ID you Want to Delete: ");
+            string idEmp = Console.ReadLine().Trim();
+            humanResourceManager.DeleteEmployee(dName, idEmp, eName);
+        }
     }
 }
