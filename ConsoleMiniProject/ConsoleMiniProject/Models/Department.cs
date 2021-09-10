@@ -62,20 +62,25 @@ namespace ConsoleMiniProject.Models
             SalaryLimit = salaryLimit;
             WorkerLimit = workerLimit;
         }
-
+        //Method for resize Employee array
         public void AddEmployee(Employee employee)
         {
             Array.Resize(ref Employees, Employees.Length + 1);
             Employees[Employees.Length - 1] = employee;
         }
+        //Method for calculate employee salary average 
         public double CalcSalaryAverage()
         {
             double SalaryAverage = 0;
             foreach (Employee item in Employees)
             {
-                SalaryAverage += item.Salary / Employees.Length;
+                if (item != null)
+                {
+                    SalaryAverage += item.Salary;
+                }
+
             }
-            return SalaryAverage;
+            return SalaryAverage = SalaryAverage / Employees.Length;
         }
 
         

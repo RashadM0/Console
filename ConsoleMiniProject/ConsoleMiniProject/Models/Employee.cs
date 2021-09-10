@@ -35,7 +35,7 @@ namespace ConsoleMiniProject.Models
             Salary = salary;
             DepartmentName = departmentName.Name;
             Positions = positions;
-            Id = departmentName.Name.Substring(0, 2).ToUpper() + _id;
+            Id = departmentName.Name.Substring(0, 2).ToUpper() + _id++;
             ////Id = $"{positions[0]}{positions[1]}{++count}";
             //switch (positions)
             //{

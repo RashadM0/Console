@@ -17,8 +17,9 @@ namespace ConsoleMiniProject.Services
         {
             _departments = new Department[0];
         }
-
+        //Department services
         #region Department
+        //Method for create new department
         public void AddDepartment(string name, double salaryLimit, int workerLimit)
         {
             Department department = new Department(name , salaryLimit , workerLimit);
@@ -26,6 +27,7 @@ namespace ConsoleMiniProject.Services
             _departments[_departments.Length - 1] = department;
                Console.WriteLine("\n\n***************************************\n\nDepartment successfully added!\n");
         }
+        //Method for make change on departments
         public void EditDepartments(string oldDepartmentname, string newDepartmentName)
         {
             Department department = Departments.First(department => oldDepartmentname == department.Name);
@@ -34,10 +36,12 @@ namespace ConsoleMiniProject.Services
             else
                 Console.WriteLine("Not Such Department Found!");
         }
+        //Method for print departments
         public Department[] GetDepartments(Department[] departments)
         {
             return departments;
         }
+        //Method for print informations department 
         public void InfoDepartment()
         {
             foreach (var item in Departments)
@@ -61,7 +65,9 @@ namespace ConsoleMiniProject.Services
             }
         }
         #endregion
+        //Employee servicess
         #region Employee
+        //Method for print employees in department array
         public void ShowEmployeeOfDepartment(Employee[] employees)
         {
                 Console.Write("Enter the Department Name: ");
@@ -95,6 +101,7 @@ namespace ConsoleMiniProject.Services
                     }
                 }
         }
+        //Mehtod for print employees 
         public void ShowEmployees(Employee[] employees)
         {
             foreach (var item in Departments)
@@ -116,6 +123,7 @@ namespace ConsoleMiniProject.Services
                 }
             }
         }
+        //Method for create new employee
         public void AddEmployee(string fullName, Positions positions, double salary, int index)
         {
             Department department = _departments[index];
@@ -141,6 +149,7 @@ namespace ConsoleMiniProject.Services
                 return;
             }
         }
+        //Method for remove employee from department
         public void DeleteEmployee(string dName, string idEmp, string eName)
         {
             Department department = null;
@@ -159,7 +168,7 @@ namespace ConsoleMiniProject.Services
                 foreach (Employee item in department.Employees)
                 {
 
-                    if (item.FullName.ToUpper() == idEmp.ToUpper())
+                    if (item.Id.ToLower() == idEmp.ToLower())
                     {
                         employee = item;
                         break;
@@ -168,21 +177,24 @@ namespace ConsoleMiniProject.Services
             }
             else
                 Console.WriteLine("Employee is not exist!");
+
             if (employee != null)
             {
                 foreach (var item in department.Employees)
                 {
-                    if (item.Id.ToUpper() == idEmp.ToUpper())
-                    {
                         int index = Array.IndexOf(department.Employees, employee);
+                    if (item.Id.ToLower() == idEmp.ToLower())
+                    {
                         Array.Clear(department.Employees, index, 1);
                         Console.WriteLine("\n\n***************************************\n\nEmployee Successfully Deleted!\n");
+                        Array.Resize(ref department.Employees, department.Employees.Length - 1);
                     }
                 }
             }
             else
-                Console.WriteLine("Employee is not exist aaaa!");
+                Console.WriteLine("Employee is not exist!");
         }
+        //Method for make change on employees
         public void EditEmployee( string id, double salary, Positions positions)
         {
             //foreach (var item in _departments)

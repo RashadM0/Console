@@ -10,11 +10,8 @@ namespace ConsoleMiniProject
     {
         static void Main(string[] args)
         {
-            
             HumanResourceManager humanResourceManager = new HumanResourceManager();
             Employee[] employees = new Employee[0];
-            
-
         TryAgain:
             #region Welcoming
             Console.WriteLine(@"                ▄█     █▄     ▄████████  ▄█        ▄████████  ▄██████▄    ▄▄▄▄███▄▄▄▄      ▄████████ 
@@ -28,6 +25,7 @@ namespace ConsoleMiniProject
                                                                                      ");
             Console.WriteLine("\t***************************************************************************************************");
             #endregion
+            //Process menu
             #region Menu
             Console.WriteLine("======================================" +
                 "\nPress '1' For Show Departments" +
@@ -54,10 +52,8 @@ namespace ConsoleMiniProject
                 "\nYour choise: ");
             #endregion
             bool isDigit = false;
-
             ChoiseAgain:
             string Choise = Console.ReadLine().Trim();
-
             foreach (char item in Choise)
             {
                 if (char.IsDigit(item) == true)
@@ -119,17 +115,17 @@ namespace ConsoleMiniProject
                         goto TryAgain;
                         break;
                     case "0":
-                    break;
+                        Console.WriteLine("Quitting");
+                        Console.WriteLine(DateTime.Now);
+                        Console.ReadLine();
+                        break;
                 default:
                         Console.Clear();
-                        
                         goto TryAgain;
                 }
             }
         }
-
-
-        
+        // Method for add new department
         static void AddDepartment(ref HumanResourceManager humanResourceManager)
         {
 
@@ -186,6 +182,7 @@ namespace ConsoleMiniProject
             }
 
         }
+        // Method for add new employee
         static void AddEmployee(ref HumanResourceManager humanResourceManager)
         {
             Console.Write("Enter Full Name of Employee: ");
@@ -224,6 +221,7 @@ namespace ConsoleMiniProject
             }
             humanResourceManager.AddEmployee(fullName, positions, salary, (Depart - 1));
         }
+        //Method for make change on departments
         static void EditDepartments(ref HumanResourceManager humanResourceManager)
         {
             Console.Write("Enter the name of the company you want to change: ");
@@ -272,7 +270,7 @@ namespace ConsoleMiniProject
                     }
                 }
         }
-            
+        //Method for make change on employee
         static void EditEmployee(ref HumanResourceManager humanResourceManager)
             {
             Console.Write("Enter Employee ID: ");
@@ -319,6 +317,7 @@ namespace ConsoleMiniProject
                 }
             }
         }
+        //Method for remove workers
         static void DeleteEmployee(ref HumanResourceManager humanResourceManager)
         {
             Console.Write("Enter Department Name: ");
