@@ -76,3 +76,16 @@ C:\Users\Mjollnnirr\Desktop\Console\ConsoleMiniProject\ConsoleMiniProject\obj\De
 C:\Users\Mjollnnirr\Desktop\Console\ConsoleMiniProject\ConsoleMiniProject\obj\Debug\netcoreapp3.1\ConsoleMiniProject.dll
 C:\Users\Mjollnnirr\Desktop\Console\ConsoleMiniProject\ConsoleMiniProject\obj\Debug\netcoreapp3.1\ConsoleMiniProject.pdb
 C:\Users\Mjollnnirr\Desktop\Console\ConsoleMiniProject\ConsoleMiniProject\obj\Debug\netcoreapp3.1\ConsoleMiniProject.genruntimeconfig.cache
+C:\Users\Mjollnnirr\Desktop\task\Console\ConsoleMiniProject\ConsoleMiniProject\bin\Debug\netcoreapp3.1\ConsoleMiniProject.exe
+C:\Users\Mjollnnirr\Desktop\task\Console\ConsoleMiniProject\ConsoleMiniProject\bin\Debug\netcoreapp3.1\ConsoleMiniProject.deps.json
+C:\Users\Mjollnnirr\Desktop\task\Console\ConsoleMiniProject\ConsoleMiniProject\bin\Debug\netcoreapp3.1\ConsoleMiniProject.runtimeconfig.json
+C:\Users\Mjollnnirr\Desktop\task\Console\ConsoleMiniProject\ConsoleMiniProject\bin\Debug\netcoreapp3.1\ConsoleMiniProject.runtimeconfig.dev.json
+C:\Users\Mjollnnirr\Desktop\task\Console\ConsoleMiniProject\ConsoleMiniProject\bin\Debug\netcoreapp3.1\ConsoleMiniProject.dll
+C:\Users\Mjollnnirr\Desktop\task\Console\ConsoleMiniProject\ConsoleMiniProject\bin\Debug\netcoreapp3.1\ConsoleMiniProject.pdb
+C:\Users\Mjollnnirr\Desktop\task\Console\ConsoleMiniProject\ConsoleMiniProject\obj\Debug\netcoreapp3.1\ConsoleMiniProject.csprojAssemblyReference.cache
+C:\Users\Mjollnnirr\Desktop\task\Console\ConsoleMiniProject\ConsoleMiniProject\obj\Debug\netcoreapp3.1\ConsoleMiniProject.AssemblyInfoInputs.cache
+C:\Users\Mjollnnirr\Desktop\task\Console\ConsoleMiniProject\ConsoleMiniProject\obj\Debug\netcoreapp3.1\ConsoleMiniProject.AssemblyInfo.cs
+C:\Users\Mjollnnirr\Desktop\task\Console\ConsoleMiniProject\ConsoleMiniProject\obj\Debug\netcoreapp3.1\ConsoleMiniProject.csproj.CoreCompileInputs.cache
+C:\Users\Mjollnnirr\Desktop\task\Console\ConsoleMiniProject\ConsoleMiniProject\obj\Debug\netcoreapp3.1\ConsoleMiniProject.dll
+C:\Users\Mjollnnirr\Desktop\task\Console\ConsoleMiniProject\ConsoleMiniProject\obj\Debug\netcoreapp3.1\ConsoleMiniProject.pdb
+C:\Users\Mjollnnirr\Desktop\task\Console\ConsoleMiniProject\ConsoleMiniProject\obj\Debug\netcoreapp3.1\ConsoleMiniProject.genruntimeconfig.cache

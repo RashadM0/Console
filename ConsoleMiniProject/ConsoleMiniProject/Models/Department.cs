@@ -54,8 +54,6 @@ namespace ConsoleMiniProject.Models
             }
         }
         public Employee[] Employees = new Employee[0];
-
-
         public Department(string name, double salaryLimit, int workerLimit)
         {
             Name = name;
@@ -81,8 +79,5 @@ namespace ConsoleMiniProject.Models
 
             }
             return SalaryAverage = SalaryAverage / Employees.Length;
-        }
-
-        
-    }
+        }    }
 }

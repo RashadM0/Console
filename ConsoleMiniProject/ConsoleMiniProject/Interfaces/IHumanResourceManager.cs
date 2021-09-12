@@ -20,7 +20,7 @@ namespace ConsoleMiniProject.Interfaces
         //Method for create new employee
         void AddEmployee(string fullName, Positions positions, double salary, int index);
         //Method for remove employee from departments
-        void DeleteEmployee(string dName, string idEmp, string eName);
+        void DeleteEmployee(string dName, string idEmp/*, string eName*/);
         //Method for make change on employee
         void EditEmployee(string id, double salary, Positions positions);
     }

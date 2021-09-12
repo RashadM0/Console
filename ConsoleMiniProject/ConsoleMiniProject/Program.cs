@@ -36,22 +36,20 @@ namespace ConsoleMiniProject
                 "\n======================================" +
                 "\nPress '4' For Show Workers" +
                 "\n======================================" +
-                "\nPress '5' For Get Workers of Department" +
+                "\nPress '5' For Create a New Worker" +
                 "\n======================================" +
-                "\nPress '6' For Create a New Worker" +
+                "\nPress '6' For Make Change on Workers" +
                 "\n======================================" +
-                "\nPress '7' For Make Change on Workers" +
-                "\n======================================" +
-                "\nPress '8' For Delete Worker from Department" +
+                "\nPress '7' For Delete Worker from Department" +
                 "\n======================================" +
                 "\nPress '0' For Exit" +
                 "\n======================================");
-
             Console.Write("\n\n" +
                 "\n--------------------------------------" +
                 "\nYour choise: ");
             #endregion
             bool isDigit = false;
+            //Choise menu
             ChoiseAgain:
             string Choise = Console.ReadLine().Trim();
             foreach (char item in Choise)
@@ -60,10 +58,9 @@ namespace ConsoleMiniProject
                     isDigit = true;
                 else
                 {
-                    Console.Write("Please Enter a Digit: ");
+                    Console.Write("Please Enter Proper Value: ");
                     goto ChoiseAgain;
                 }
-
                 switch (Choise)
                 {
                     case "1":
@@ -91,31 +88,25 @@ namespace ConsoleMiniProject
                         goto TryAgain;
                         break;
                     case "5":
-                        humanResourceManager.ShowEmployeeOfDepartment(employees);
-                        Console.WriteLine("Press any key for continue");
-                        Console.ReadLine();
-                        goto TryAgain;
-                        break;
-                    case "6":
                         AddEmployee(ref humanResourceManager);
                         Console.WriteLine("Press any key for continue");
                         Console.ReadLine();
                         goto TryAgain;
                         break;
-                    case "7":
+                    case "6":
                         EditEmployee(ref humanResourceManager);
                         Console.WriteLine("Press any key for continue");
                         Console.ReadLine();
                         goto TryAgain;
                         break;
-                    case "8":
+                    case "7":
                         DeleteEmployee(ref humanResourceManager);
                         Console.WriteLine("Press any key for continue");
                         Console.ReadLine();
                         goto TryAgain;
                         break;
                     case "0":
-                        Console.WriteLine("Quitting");
+                        Console.WriteLine("Thank you for using our application :)");
                         Console.WriteLine(DateTime.Now);
                         Console.ReadLine();
                         break;
@@ -128,12 +119,11 @@ namespace ConsoleMiniProject
         // Method for add new department
         static void AddDepartment(ref HumanResourceManager humanResourceManager)
         {
-
             Console.Clear();
         AddAgain:
             Console.Write("Please Enter the Department Name: ");
         AddAgain2:
-            string name = Console.ReadLine();
+            string name = Convert.ToString(Console.ReadLine()).Trim();
             if (name.Length <= 1)
             {
                 Console.Write(
@@ -152,7 +142,11 @@ namespace ConsoleMiniProject
                     "Please Enter Integer Value: ");
                 goto ChoiseWorkerLimit;
             }
-
+            if (workerLimit < 0)
+            {
+                Console.Write("Please Enter Positive Number: ");
+                goto ChoiseWorkerLimit;
+            }
             Console.Write("Please Enter the Salary Limit: ");
             ChoiseSalaryLimit:
             double salaryLimit;
@@ -164,7 +158,6 @@ namespace ConsoleMiniProject
                     "Please Enter Proper Value: ");
                 goto ChoiseSalaryLimit;
             }
-            
             if (salaryLimit >= 250 && workerLimit >= 1)
             {
                 humanResourceManager.AddDepartment(name, salaryLimit, workerLimit);
@@ -187,12 +180,13 @@ namespace ConsoleMiniProject
         {
             Console.Write("Enter Full Name of Employee: ");
             string fullName = Console.ReadLine();
-
             for (int i = 0; i < humanResourceManager.Departments.Length; i++)
             {
                 Console.WriteLine($"{i + 1} - {humanResourceManager.Departments[i].Name}");
             }
+            Console.Write("Choise Department: ");
             int Depart = int.Parse(Console.ReadLine());
+            
             string[] positionType = Enum.GetNames(typeof(Positions));
             for (int j = 0; j < positionType.Length; j++)
             {
@@ -204,16 +198,21 @@ namespace ConsoleMiniProject
             typestr = Console.ReadLine();
             while (!int.TryParse(typestr, out typeint) || typeint < 1 || typeint > positionType.Length)
             {
-                Console.WriteLine("Please Try Again: ");
+                Console.Write("Please Try Again: ");
                 typestr = Console.ReadLine();
             }
             Positions positions = (Positions)typeint;
-
-
             Console.Write("Enter Salary of Employee: ");
         tryagain:
-
-            double salary = Convert.ToDouble(Console.ReadLine());
+            double salary;
+            bool number1 = double.TryParse(Console.ReadLine(), out salary);
+            if (!number1)
+            {
+                Console.Write(
+                    "\n" +
+                    "Please Enter Proper Value: ");
+                goto tryagain;
+            }
             if (salary < 250)
             {
                 Console.Write("The Minimum Salary Should be 250. Please Try Again: ");
@@ -226,49 +225,47 @@ namespace ConsoleMiniProject
         {
             Console.Write("Enter the name of the company you want to change: ");
         CreateAgain:
-            string oldName = Console.ReadLine().ToLower();
-            
+            string oldName = Convert.ToString(Console.ReadLine()).Trim();
                 foreach (var item in humanResourceManager.Departments)
                 {
-                    if (item.Name == oldName)
+                    if (item.Name.ToLower() == oldName.ToLower())
                     {
                         Console.Write("Enter new Department Name: ");
-                    EnterAgain:
-                        string newName = Console.ReadLine();
-                        foreach (var item1 in humanResourceManager.Departments)
+                EnterAgain:
+                    string newName = Convert.ToString(Console.ReadLine()).Trim();
+                    foreach (var item1 in humanResourceManager.Departments) 
+                    {
+                        if (item1.Name.ToUpper() == newName.ToUpper())
                         {
-                            if (item1.Name == newName)
-                            {
-                                Console.Write("The department you entered is exist.. Please Try Again: ");
-                                goto EnterAgain;
-                            }
-                            if (item.Name == newName)
-                            {
-                                Console.Write("New Name and Old Name Cannot Be the Same. Please Try Again: ");
-                                goto EnterAgain;
-                            }
-                            else
-                            {
-                                humanResourceManager.EditDepartments(oldName, newName);
-                                foreach (var item3 in humanResourceManager.Departments)
-                                {
-                                    foreach (var item2 in item1.Employees)
-                                    {
-                                        item2.Id = item2.Id.Replace(item2.Id.Substring(0, 2), newName.ToUpper().Substring(0, 2));
-                                        item2.DepartmentName = newName;
-                                    }
-                                }
-                                Console.WriteLine("\n\n***************************************\n\nDepartment successfully editing!\n");
-                                break;
-                            }
-
+                            Console.Write("The department you entered is already exist.. Please Try Again: ");
+                            goto EnterAgain;
                         }
+                    }
+                    if (item.Name.ToUpper() == newName.ToUpper())
+                    {
+                        Console.Write("New Name and Old Name Cannot Be the Same. Please Try Again: ");
+                        goto EnterAgain;
                     }
                     else
                     {
-                        Console.WriteLine("\n\n***************************************\n\nNo such department found!\n");
+                        humanResourceManager.EditDepartments(oldName, newName);
+                        foreach (var item1 in humanResourceManager.Departments) 
+                        {
+                            foreach (var item2 in item1.Employees)
+                            {
+                                item2.Id = item2.Id.Replace(item2.Id.Substring(0, 2), newName.ToUpper().Substring(0, 2));
+                                item2.DepartmentName = newName;
+                            }
+                        }
+                        Console.WriteLine("\n\n***************************************\n\nDepartment successfully editing!\n");
+                        break;
                     }
-                }
+                    }
+                else
+                    Console.WriteLine("\n\n***************************************\n\nNo such department found!\n");
+
+
+            }
         }
         //Method for make change on employee
         static void EditEmployee(ref HumanResourceManager humanResourceManager)
@@ -279,7 +276,7 @@ namespace ConsoleMiniProject
             {
                 foreach (var item1 in item.Employees)
                 {
-                    if (item1.Id == id)
+                    if (item1.Id.ToLower() == id.ToLower())
                     {
                         Console.WriteLine("Employee Detected: ");
                         Console.WriteLine("++++++++++++++++++++++++++++++++++++++" +
@@ -297,19 +294,31 @@ namespace ConsoleMiniProject
                         int typeInt;
                         Console.Write("\n***************************************\nSelect Position: ");
                         typeStr = Console.ReadLine();
-
                         while (!int.TryParse(typeStr, out typeInt) || typeInt < 1 || typeInt > positionName.Length)
                         {
                             Console.WriteLine("Wrong Number!");
                             typeStr = Console.ReadLine();
                         }
-
                         Positions positions = (Positions)typeInt;
                         item1.Positions = positions;
-
                         Console.Write("\n***************************************\nEnter new employee salary: ");
-                        double salary = Convert.ToDouble(Console.ReadLine());
-                        item1.Salary = salary;
+                        tryagain1:
+                        double salary;/* = Convert.ToDouble(Console.ReadLine());*/
+                        bool number = double.TryParse(Console.ReadLine(), out salary);
+                        if (!number)
+                        {
+                            Console.Write(
+                            "\n" +
+                            "Please Enter Proper Value: ");
+                            goto tryagain1;
+                        }
+                        if (salary < 250)
+                        {
+                            Console.Write("The Minimum Salary Should be 250. Please Try Again: ");
+                            goto tryagain1;
+                        }
+                        else
+                            item1.Salary = salary;
                         humanResourceManager.EditEmployee(id, salary, positions);
                         Console.WriteLine("\n\n***************************************\n\nEmployee successfully edited!\n");
                         return;
@@ -322,11 +331,11 @@ namespace ConsoleMiniProject
         {
             Console.Write("Enter Department Name: ");
             string dName = Console.ReadLine().Trim();
-            Console.Write("Enter Employee Name you Want to Delete: ");
-            string eName = Console.ReadLine().Trim();
             Console.Write("Enter Employee ID you Want to Delete: ");
             string idEmp = Console.ReadLine().Trim();
-            humanResourceManager.DeleteEmployee(dName, idEmp, eName);
+            //Console.Write("Enter employee name you want to delete: ");
+            //string ename = Console.ReadLine().Trim();
+            humanResourceManager.DeleteEmployee(dName, idEmp/*, ename*/);
         }
     }
 }
