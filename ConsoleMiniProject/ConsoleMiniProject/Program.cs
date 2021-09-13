@@ -48,8 +48,8 @@ namespace ConsoleMiniProject
                 "\n--------------------------------------" +
                 "\nYour choise: ");
             #endregion
-            bool isDigit = false;
             //Choise menu
+            bool isDigit = false;
             ChoiseAgain:
             string Choise = Console.ReadLine().Trim();
             foreach (char item in Choise)
@@ -68,43 +68,36 @@ namespace ConsoleMiniProject
                         Console.WriteLine("Press any key for continue");
                         Console.ReadLine();
                         goto TryAgain;
-                    break;
                     case "2":
                         AddDepartment(ref humanResourceManager);
                         Console.WriteLine("Press any key for continue");
                         Console.ReadLine();
                         goto TryAgain;
-                    break;
                     case "3":
                         EditDepartments(ref humanResourceManager);
                         Console.WriteLine("Press any key for continue");
                         Console.ReadLine();
                         goto TryAgain;
-                        break;
                     case "4":
                         humanResourceManager.ShowEmployees(employees);
                         Console.WriteLine("Press any key for continue");
                         Console.ReadLine();
                         goto TryAgain;
-                        break;
                     case "5":
                         AddEmployee(ref humanResourceManager);
                         Console.WriteLine("Press any key for continue");
                         Console.ReadLine();
                         goto TryAgain;
-                        break;
                     case "6":
                         EditEmployee(ref humanResourceManager);
                         Console.WriteLine("Press any key for continue");
                         Console.ReadLine();
                         goto TryAgain;
-                        break;
                     case "7":
                         DeleteEmployee(ref humanResourceManager);
                         Console.WriteLine("Press any key for continue");
                         Console.ReadLine();
                         goto TryAgain;
-                        break;
                     case "0":
                         Console.WriteLine("Thank you for using our application :)");
                         Console.WriteLine(DateTime.Now);

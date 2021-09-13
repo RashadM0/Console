@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mjollnnirr\\Desktop\\task\\Console\\ConsoleMiniProject\\ConsoleMiniProject\\ConsoleMiniProject.csproj",
+      "projectUniqueName": "C:\\Users\\Mjollnnirr\\Desktop\\Console\\ConsoleMiniProject\\ConsoleMiniProject\\ConsoleMiniProject.csproj",
       "projectName": "ConsoleMiniProject",
-      "projectPath": "C:\\Users\\Mjollnnirr\\Desktop\\task\\Console\\ConsoleMiniProject\\ConsoleMiniProject\\ConsoleMiniProject.csproj",
+      "projectPath": "C:\\Users\\Mjollnnirr\\Desktop\\Console\\ConsoleMiniProject\\ConsoleMiniProject\\ConsoleMiniProject.csproj",
       "packagesPath": "C:\\Users\\Mjollnnirr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mjollnnirr\\Desktop\\task\\Console\\ConsoleMiniProject\\ConsoleMiniProject\\obj\\",
+      "outputPath": "C:\\Users\\Mjollnnirr\\Desktop\\Console\\ConsoleMiniProject\\ConsoleMiniProject\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
