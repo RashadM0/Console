@@ -171,8 +171,13 @@ namespace ConsoleMiniProject
         // Method for add new employee
         static void AddEmployee(ref HumanResourceManager humanResourceManager)
         {
-            Console.Write("Enter Full Name of Employee: ");
-            string fullName = Console.ReadLine();
+            string fullname;
+            int typeint1;
+            do
+            {
+                Console.Write("Enter Full Name of Employee: ");
+                fullname = Console.ReadLine();
+            } while (int.TryParse(fullname, out typeint1));
             for (int i = 0; i < humanResourceManager.Departments.Length; i++)
             {
                 Console.WriteLine($"{i + 1} - {humanResourceManager.Departments[i].Name}");
@@ -211,7 +216,7 @@ namespace ConsoleMiniProject
                 Console.Write("The Minimum Salary Should be 250. Please Try Again: ");
                 goto tryagain;
             }
-            humanResourceManager.AddEmployee(fullName, positions, salary, (Depart - 1));
+            humanResourceManager.AddEmployee(fullname, positions, salary, (Depart - 1));
         }
         //Method for make change on departments
         static void EditDepartments(ref HumanResourceManager humanResourceManager)

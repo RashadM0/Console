@@ -1,23 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Mjollnnirr\\Desktop\\Console\\ConsoleMiniProject\\ConsoleMiniProject\\ConsoleMiniProject.csproj": {}
+    "C:\\Users\\rashadkhm\\Desktop\\Console\\ConsoleMiniProject\\ConsoleMiniProject\\ConsoleMiniProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Mjollnnirr\\Desktop\\Console\\ConsoleMiniProject\\ConsoleMiniProject\\ConsoleMiniProject.csproj": {
+    "C:\\Users\\rashadkhm\\Desktop\\Console\\ConsoleMiniProject\\ConsoleMiniProject\\ConsoleMiniProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mjollnnirr\\Desktop\\Console\\ConsoleMiniProject\\ConsoleMiniProject\\ConsoleMiniProject.csproj",
+        "projectUniqueName": "C:\\Users\\rashadkhm\\Desktop\\Console\\ConsoleMiniProject\\ConsoleMiniProject\\ConsoleMiniProject.csproj",
         "projectName": "ConsoleMiniProject",
-        "projectPath": "C:\\Users\\Mjollnnirr\\Desktop\\Console\\ConsoleMiniProject\\ConsoleMiniProject\\ConsoleMiniProject.csproj",
-        "packagesPath": "C:\\Users\\Mjollnnirr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mjollnnirr\\Desktop\\Console\\ConsoleMiniProject\\ConsoleMiniProject\\obj\\",
+        "projectPath": "C:\\Users\\rashadkhm\\Desktop\\Console\\ConsoleMiniProject\\ConsoleMiniProject\\ConsoleMiniProject.csproj",
+        "packagesPath": "C:\\Users\\rashadkhm\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\rashadkhm\\Desktop\\Console\\ConsoleMiniProject\\ConsoleMiniProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Mjollnnirr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\rashadkhm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -57,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
